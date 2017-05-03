@@ -7,23 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db.Models
+namespace Project_Db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ProblemTypes
+    public partial class ProblemType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ProblemTypes()
+        public ProblemType()
         {
-            this.Problems = new HashSet<Problems>();
+            this.Problems = new HashSet<Problem>();
         }
     
         public int TypeID { get; set; }
         public string Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Problems> Problems { get; set; }
+        public virtual ICollection<Problem> Problems { get; set; }
     }
 }

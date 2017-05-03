@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db.Models
+namespace Project_Db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Employees
+    public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employees()
+        public Employee()
         {
-            this.AssigneeLogs = new HashSet<AssigneeLogs>();
-            this.Calls = new HashSet<Calls>();
-            this.Equipements = new HashSet<Equipements>();
-            this.Specialists = new HashSet<Specialists>();
+            this.AssigneeLogs = new HashSet<AssigneeLog>();
+            this.Calls = new HashSet<Call>();
+            this.Equipements = new HashSet<Equipement>();
+            this.Specialists = new HashSet<Specialist>();
         }
     
         public int EmployeeID { get; set; }
@@ -32,12 +32,12 @@ namespace Project_Db.Models
         public string Gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AssigneeLogs> AssigneeLogs { get; set; }
+        public virtual ICollection<AssigneeLog> AssigneeLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Calls> Calls { get; set; }
+        public virtual ICollection<Call> Calls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Equipements> Equipements { get; set; }
+        public virtual ICollection<Equipement> Equipements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Specialists> Specialists { get; set; }
+        public virtual ICollection<Specialist> Specialists { get; set; }
     }
 }

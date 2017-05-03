@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Database1Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AssigneeLogs">
           <Key>
             <PropertyRef Name="SpecialistID" />
@@ -197,7 +197,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Database1ModelStoreContainer">
+        <EntityContainer Name="Database1Model1StoreContainer">
           <EntitySet Name="AssigneeLogs" EntityType="Self.AssigneeLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calls" EntityType="Self.Calls" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
@@ -247,8 +247,8 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AssigneeLogs">
+      <Schema Namespace="Database1Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AssigneeLog">
           <Key>
             <PropertyRef Name="SpecialistID" />
           </Key>
@@ -256,10 +256,10 @@
           <Property Name="ProblemID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProblemProblemID" Type="Int32" Nullable="false" />
           <Property Name="EmployeeEmployeeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_AssigneeLogEmployee" FromRole="AssigneeLogs" ToRole="Employees" />
-          <NavigationProperty Name="Problems" Relationship="Self.FK_ProblemAssigneeLog" FromRole="AssigneeLogs" ToRole="Problems" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_AssigneeLogEmployee" FromRole="AssigneeLogs" ToRole="Employees" />
+          <NavigationProperty Name="Problem" Relationship="Self.FK_ProblemAssigneeLog" FromRole="AssigneeLogs" ToRole="Problems" />
         </EntityType>
-        <EntityType Name="Calls">
+        <EntityType Name="Call">
           <Key>
             <PropertyRef Name="CallID" />
           </Key>
@@ -270,10 +270,10 @@
           <Property Name="TimeEnd" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmployeeEmployeeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_CallEmployee" FromRole="Calls" ToRole="Employees" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_CallEmployee" FromRole="Calls" ToRole="Employees" />
           <NavigationProperty Name="ProblemCallLogs" Relationship="Self.FK_ProblemCallLogCall" FromRole="Calls" ToRole="ProblemCallLogs" />
         </EntityType>
-        <EntityType Name="Employees">
+        <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="EmployeeID" />
           </Key>
@@ -289,7 +289,7 @@
           <NavigationProperty Name="Equipements" Relationship="Self.FK_EquipementEmployee" FromRole="Employees" ToRole="Equipements" />
           <NavigationProperty Name="Specialists" Relationship="Self.FK_SpecialistEmployee" FromRole="Employees" ToRole="Specialists" />
         </EntityType>
-        <EntityType Name="Equipements">
+        <EntityType Name="Equipement">
           <Key>
             <PropertyRef Name="EquipmentID" />
           </Key>
@@ -299,10 +299,10 @@
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmployeeEmployeeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_EquipementEmployee" FromRole="Equipements" ToRole="Employees" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EquipementEmployee" FromRole="Equipements" ToRole="Employees" />
           <NavigationProperty Name="Problems" Relationship="Self.FK_ProblemEquipement" FromRole="Equipements" ToRole="Problems" />
         </EntityType>
-        <EntityType Name="ProblemCallLogs">
+        <EntityType Name="ProblemCallLog">
           <Key>
             <PropertyRef Name="CallID" />
           </Key>
@@ -310,10 +310,10 @@
           <Property Name="ProblemID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProblemProblemID" Type="Int32" Nullable="false" />
           <Property Name="CallCallID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Calls" Relationship="Self.FK_ProblemCallLogCall" FromRole="ProblemCallLogs" ToRole="Calls" />
-          <NavigationProperty Name="Problems" Relationship="Self.FK_ProblemProblemCallLog" FromRole="ProblemCallLogs" ToRole="Problems" />
+          <NavigationProperty Name="Call" Relationship="Self.FK_ProblemCallLogCall" FromRole="ProblemCallLogs" ToRole="Calls" />
+          <NavigationProperty Name="Problem" Relationship="Self.FK_ProblemProblemCallLog" FromRole="ProblemCallLogs" ToRole="Problems" />
         </EntityType>
-        <EntityType Name="Problems">
+        <EntityType Name="Problem">
           <Key>
             <PropertyRef Name="ProblemID" />
           </Key>
@@ -328,11 +328,11 @@
           <Property Name="ProblemTypeTypeID" Type="Int32" Nullable="false" />
           <Property Name="EquipementEquipmentID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AssigneeLogs" Relationship="Self.FK_ProblemAssigneeLog" FromRole="Problems" ToRole="AssigneeLogs" />
-          <NavigationProperty Name="Equipements" Relationship="Self.FK_ProblemEquipement" FromRole="Problems" ToRole="Equipements" />
+          <NavigationProperty Name="Equipement" Relationship="Self.FK_ProblemEquipement" FromRole="Problems" ToRole="Equipements" />
           <NavigationProperty Name="ProblemCallLogs" Relationship="Self.FK_ProblemProblemCallLog" FromRole="Problems" ToRole="ProblemCallLogs" />
-          <NavigationProperty Name="ProblemTypes" Relationship="Self.FK_ProblemTypeProblem" FromRole="Problems" ToRole="ProblemTypes" />
+          <NavigationProperty Name="ProblemType1" Relationship="Self.FK_ProblemTypeProblem" FromRole="Problems" ToRole="ProblemTypes" />
         </EntityType>
-        <EntityType Name="ProblemTypes">
+        <EntityType Name="ProblemType">
           <Key>
             <PropertyRef Name="TypeID" />
           </Key>
@@ -340,7 +340,7 @@
           <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Problems" Relationship="Self.FK_ProblemTypeProblem" FromRole="ProblemTypes" ToRole="Problems" />
         </EntityType>
-        <EntityType Name="Specialists">
+        <EntityType Name="Specialist">
           <Key>
             <PropertyRef Name="SpecialistID" />
           </Key>
@@ -348,11 +348,11 @@
           <Property Name="NumberOfProblems" Type="Int32" Nullable="false" />
           <Property Name="Speciality" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Employee_EmployeeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_SpecialistEmployee" FromRole="Specialists" ToRole="Employees" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_SpecialistEmployee" FromRole="Specialists" ToRole="Employees" />
         </EntityType>
         <Association Name="FK_AssigneeLogEmployee">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="AssigneeLogs" Type="Self.AssigneeLogs" Multiplicity="*" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AssigneeLogs" Type="Self.AssigneeLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="EmployeeID" />
@@ -363,8 +363,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProblemAssigneeLog">
-          <End Role="Problems" Type="Self.Problems" Multiplicity="1" />
-          <End Role="AssigneeLogs" Type="Self.AssigneeLogs" Multiplicity="*" />
+          <End Role="Problems" Type="Self.Problem" Multiplicity="1" />
+          <End Role="AssigneeLogs" Type="Self.AssigneeLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Problems">
               <PropertyRef Name="ProblemID" />
@@ -375,8 +375,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CallEmployee">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Calls" Type="Self.Calls" Multiplicity="*" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Calls" Type="Self.Call" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="EmployeeID" />
@@ -387,8 +387,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProblemCallLogCall">
-          <End Role="Calls" Type="Self.Calls" Multiplicity="1" />
-          <End Role="ProblemCallLogs" Type="Self.ProblemCallLogs" Multiplicity="*" />
+          <End Role="Calls" Type="Self.Call" Multiplicity="1" />
+          <End Role="ProblemCallLogs" Type="Self.ProblemCallLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Calls">
               <PropertyRef Name="CallID" />
@@ -399,8 +399,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EquipementEmployee">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Equipements" Type="Self.Equipements" Multiplicity="*" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Equipements" Type="Self.Equipement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="EmployeeID" />
@@ -411,8 +411,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SpecialistEmployee">
-          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
-          <End Role="Specialists" Type="Self.Specialists" Multiplicity="*" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Specialists" Type="Self.Specialist" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employees">
               <PropertyRef Name="EmployeeID" />
@@ -423,8 +423,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProblemEquipement">
-          <End Role="Equipements" Type="Self.Equipements" Multiplicity="1" />
-          <End Role="Problems" Type="Self.Problems" Multiplicity="*" />
+          <End Role="Equipements" Type="Self.Equipement" Multiplicity="1" />
+          <End Role="Problems" Type="Self.Problem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Equipements">
               <PropertyRef Name="EquipmentID" />
@@ -435,8 +435,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProblemProblemCallLog">
-          <End Role="Problems" Type="Self.Problems" Multiplicity="1" />
-          <End Role="ProblemCallLogs" Type="Self.ProblemCallLogs" Multiplicity="*" />
+          <End Role="Problems" Type="Self.Problem" Multiplicity="1" />
+          <End Role="ProblemCallLogs" Type="Self.ProblemCallLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Problems">
               <PropertyRef Name="ProblemID" />
@@ -447,8 +447,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProblemTypeProblem">
-          <End Role="ProblemTypes" Type="Self.ProblemTypes" Multiplicity="1" />
-          <End Role="Problems" Type="Self.Problems" Multiplicity="*" />
+          <End Role="ProblemTypes" Type="Self.ProblemType" Multiplicity="1" />
+          <End Role="Problems" Type="Self.Problem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProblemTypes">
               <PropertyRef Name="TypeID" />
@@ -458,15 +458,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AssigneeLogs" EntityType="Self.AssigneeLogs" />
-          <EntitySet Name="Calls" EntityType="Self.Calls" />
-          <EntitySet Name="Employees" EntityType="Self.Employees" />
-          <EntitySet Name="Equipements" EntityType="Self.Equipements" />
-          <EntitySet Name="ProblemCallLogs" EntityType="Self.ProblemCallLogs" />
-          <EntitySet Name="Problems" EntityType="Self.Problems" />
-          <EntitySet Name="ProblemTypes" EntityType="Self.ProblemTypes" />
-          <EntitySet Name="Specialists" EntityType="Self.Specialists" />
+        <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssigneeLogs" EntityType="Self.AssigneeLog" />
+          <EntitySet Name="Calls" EntityType="Self.Call" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Equipements" EntityType="Self.Equipement" />
+          <EntitySet Name="ProblemCallLogs" EntityType="Self.ProblemCallLog" />
+          <EntitySet Name="Problems" EntityType="Self.Problem" />
+          <EntitySet Name="ProblemTypes" EntityType="Self.ProblemType" />
+          <EntitySet Name="Specialists" EntityType="Self.Specialist" />
           <AssociationSet Name="FK_AssigneeLogEmployee" Association="Self.FK_AssigneeLogEmployee">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="AssigneeLogs" EntitySet="AssigneeLogs" />
@@ -509,9 +509,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+        <EntityContainerMapping StorageEntityContainer="Database1Model1StoreContainer" CdmEntityContainer="DbEntities">
           <EntitySetMapping Name="AssigneeLogs">
-            <EntityTypeMapping TypeName="Database1Model.AssigneeLogs">
+            <EntityTypeMapping TypeName="Database1Model1.AssigneeLog">
               <MappingFragment StoreEntitySet="AssigneeLogs">
                 <ScalarProperty Name="SpecialistID" ColumnName="SpecialistID" />
                 <ScalarProperty Name="ProblemID" ColumnName="ProblemID" />
@@ -521,7 +521,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Calls">
-            <EntityTypeMapping TypeName="Database1Model.Calls">
+            <EntityTypeMapping TypeName="Database1Model1.Call">
               <MappingFragment StoreEntitySet="Calls">
                 <ScalarProperty Name="CallID" ColumnName="CallID" />
                 <ScalarProperty Name="CallerID" ColumnName="CallerID" />
@@ -534,7 +534,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="Database1Model.Employees">
+            <EntityTypeMapping TypeName="Database1Model1.Employee">
               <MappingFragment StoreEntitySet="Employees">
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -547,7 +547,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipements">
-            <EntityTypeMapping TypeName="Database1Model.Equipements">
+            <EntityTypeMapping TypeName="Database1Model1.Equipement">
               <MappingFragment StoreEntitySet="Equipements">
                 <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -559,7 +559,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProblemCallLogs">
-            <EntityTypeMapping TypeName="Database1Model.ProblemCallLogs">
+            <EntityTypeMapping TypeName="Database1Model1.ProblemCallLog">
               <MappingFragment StoreEntitySet="ProblemCallLogs">
                 <ScalarProperty Name="CallID" ColumnName="CallID" />
                 <ScalarProperty Name="ProblemID" ColumnName="ProblemID" />
@@ -569,7 +569,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Problems">
-            <EntityTypeMapping TypeName="Database1Model.Problems">
+            <EntityTypeMapping TypeName="Database1Model1.Problem">
               <MappingFragment StoreEntitySet="Problems">
                 <ScalarProperty Name="ProblemID" ColumnName="ProblemID" />
                 <ScalarProperty Name="EquipementID" ColumnName="EquipementID" />
@@ -585,7 +585,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProblemTypes">
-            <EntityTypeMapping TypeName="Database1Model.ProblemTypes">
+            <EntityTypeMapping TypeName="Database1Model1.ProblemType">
               <MappingFragment StoreEntitySet="ProblemTypes">
                 <ScalarProperty Name="TypeID" ColumnName="TypeID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -593,7 +593,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Specialists">
-            <EntityTypeMapping TypeName="Database1Model.Specialists">
+            <EntityTypeMapping TypeName="Database1Model1.Specialist">
               <MappingFragment StoreEntitySet="Specialists">
                 <ScalarProperty Name="SpecialistID" ColumnName="SpecialistID" />
                 <ScalarProperty Name="NumberOfProblems" ColumnName="NumberOfProblems" />
@@ -616,7 +616,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

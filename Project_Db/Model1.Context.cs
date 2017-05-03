@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db.Models
+namespace Project_Db
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Database1Entities : DbContext
+    public partial class DbEntities : DbContext
     {
-        public Database1Entities()
-            : base("name=Database1Entities")
+        public DbEntities()
+            : base("name=DbEntities")
         {
         }
     
@@ -25,13 +25,13 @@ namespace Project_Db.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AssigneeLogs> AssigneeLogs { get; set; }
-        public virtual DbSet<Calls> Calls { get; set; }
-        public virtual DbSet<Employees> Employees { get; set; }
-        public virtual DbSet<Equipements> Equipements { get; set; }
-        public virtual DbSet<ProblemCallLogs> ProblemCallLogs { get; set; }
-        public virtual DbSet<Problems> Problems { get; set; }
-        public virtual DbSet<ProblemTypes> ProblemTypes { get; set; }
-        public virtual DbSet<Specialists> Specialists { get; set; }
+        public virtual DbSet<AssigneeLog> AssigneeLogs { get; set; }
+        public virtual DbSet<Call> Calls { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Equipement> Equipements { get; set; }
+        public virtual DbSet<ProblemCallLog> ProblemCallLogs { get; set; }
+        public virtual DbSet<Problem> Problems { get; set; }
+        public virtual DbSet<ProblemType> ProblemTypes { get; set; }
+        public virtual DbSet<Specialist> Specialists { get; set; }
     }
 }

@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db.Models
+namespace Project_Db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Calls
+    public partial class Call
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Calls()
+        public Call()
         {
-            this.ProblemCallLogs = new HashSet<ProblemCallLogs>();
+            this.ProblemCallLogs = new HashSet<ProblemCallLog>();
         }
     
         public int CallID { get; set; }
@@ -28,8 +28,8 @@ namespace Project_Db.Models
         public string Notes { get; set; }
         public int EmployeeEmployeeID { get; set; }
     
-        public virtual Employees Employees { get; set; }
+        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProblemCallLogs> ProblemCallLogs { get; set; }
+        public virtual ICollection<ProblemCallLog> ProblemCallLogs { get; set; }
     }
 }

@@ -7,19 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db.Models
+namespace Project_Db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class ProblemCallLogs
+    public partial class Specialist
     {
-        public int CallID { get; set; }
-        public string ProblemID { get; set; }
-        public int ProblemProblemID { get; set; }
-        public int CallCallID { get; set; }
+        public int SpecialistID { get; set; }
+        public int NumberOfProblems { get; set; }
+        public string Speciality { get; set; }
+        public int Employee_EmployeeID { get; set; }
     
-        public virtual Calls Calls { get; set; }
-        public virtual Problems Problems { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }
