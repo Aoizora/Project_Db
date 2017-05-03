@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db.Models
+namespace Project_Db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Problems
+    public partial class Problem
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Problems()
+        public Problem()
         {
-            this.AssigneeLogs = new HashSet<AssigneeLogs>();
-            this.ProblemCallLogs = new HashSet<ProblemCallLogs>();
+            this.AssigneeLogs = new HashSet<AssigneeLog>();
+            this.ProblemCallLogs = new HashSet<ProblemCallLog>();
         }
     
         public int ProblemID { get; set; }
@@ -33,10 +33,10 @@ namespace Project_Db.Models
         public int EquipementEquipmentID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AssigneeLogs> AssigneeLogs { get; set; }
-        public virtual Equipements Equipements { get; set; }
+        public virtual ICollection<AssigneeLog> AssigneeLogs { get; set; }
+        public virtual Equipement Equipement { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProblemCallLogs> ProblemCallLogs { get; set; }
-        public virtual ProblemTypes ProblemTypes { get; set; }
+        public virtual ICollection<ProblemCallLog> ProblemCallLogs { get; set; }
+        public virtual ProblemType ProblemType1 { get; set; }
     }
 }
