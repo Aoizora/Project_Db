@@ -1,3 +1,175 @@
 ﻿@model Project_Db.Problem
 
-<p>Helpdesk view</p>
+<div class="container">
+    <div class="mainWindow">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#1" data-toggle="tab">New Reported Problems</a>
+            </li>
+            <li>
+                <a href="#2" data-toggle="tab">Manage Problems</a>
+            </li>
+            <li>
+                <a href="#3" data-toggle="tab">List of Employees</a>
+            </li>
+            <li>
+                <a href="#4" data-toggle="tab">Resolved Problems</a>
+            </li>
+        </ul>
+
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="1">
+                <h3>New Reported Problems</h3>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Problem Id</th>
+                            <th>Submitted By</th>
+
+                            <th>Problem Name</th>
+                            <th>Problem Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>John Smith</td>
+                            <td>Zniszczony Monitor</td>
+                            <td>Rozbilem se kurde monitora, hehe, i nie mam na czym pracowac tyro</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>John Smith</td>
+                            <td>Zniszczona myszka</td>
+                            <td>W sumie to xd myszka rozbilem ten monitor XDD i myszka tez nie dziala XDDDDDD</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="tab-pane" id="2">
+                <h3>Problems In Progress</h3>
+                <div class="row" id="separateSection">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>Problem ID:</p>
+                                <p id="hugeText">123456</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>Submitted by:  ..............</p>
+                                <p>Email: ...........</p>
+                                <p>Date: ...............</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p>Problem Description:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p>Description of a problem </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                            
+                                <div class="col-sm-4">
+                                    <p>Assign Specialist:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="form-control">
+                                        <option>Specialist 1</option>
+                                        <option>Specialist 2</option>
+                                        <option>Specialist 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p>Change Progress:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="form-control">
+                                        <option>Problem not assigned</option>
+                                        <option>Problem assigned to worker</option>
+                                        <option>Finished</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <button type="button" id="submitButton" class="btn btn-default btn-lg">Submit Changes</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="row" id="separateSection">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>Problem ID:</p>
+                                <p id="hugeText">123456</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>Submitted by:  ..............</p>
+                                <p>Email: ...........</p>
+                                <p>Date: ...............</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p>Problem Description:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p>Description of a problem </p>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-4">
+                                    <p>Assign Employee:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="form-control">
+                                        <option>Employee 1</option>
+                                        <option>Employee 2</option>
+                                        <option>Employee 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p>Change Progress:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <select class="form-control">
+                                        <option>Problem not assigned</option>
+                                        <option>Problem assigned to worker</option>
+                                        <option>Finished</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <button type="button" id="submitButton" class="btn btn-default btn-lg">Submit Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tab-pane" id="3">
+                <h3>Content 3</h3>
+            </div>
+            <div class="tab-pane" id="4">
+                <h3>Content 4</h3>
+            </div>
+        </div>
+    </div>
+</div>

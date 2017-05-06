@@ -16,9 +16,77 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+
+
+/*---------------------------------------------------------------------------------------------*/
+
+@import url("http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.5.4/bootstrap-select.min.css");
+
+.mainWindow .nav-tabs > li > a {
+    color: black;
+    border-radius: 14px 14px 2px 2px;
+    padding: 8px 14px;
+    background-color:#999999;
+    font-size: 125%;
 }
+
+a, a:active, a:focus {
+outline: none;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus{
+    background-color:#EFEFEF;
+}
+
+.nav-tabs > li > a:hover{
+
+    background-color:#EFEFEF;
+}
+
+.tab-content {
+  color: black;
+  padding : 30px 60px;
+  border:1px solid #dbdbdb;
+  background-color: #EFEFEF;
+  height:auto;
+  min-height:400px;
+}
+
+#submitButton {
+    float: left;
+    margin-top:25px;
+}
+.darkBackground {
+  background-color:#efefef;
+  border:1px solid #dbdbdb;
+}
+
+.form-group label{
+    font-size: 115%;
+}
+
+#separateSection{
+    border: 2px ridge #666666;
+    margin-top: 30px;
+    padding: 10px 40px;
+}
+
+#hugeText{
+    text-align: left;
+    font-size:x-large;
+    color: #666666;
+    font-weight: bold;
+}
+
+.row p {
+    font-size: 120%
+}
+
+.row .row {
+    margin: 5px;
+}
+
+h4{
+    padding-bottom: 20px;
+}
+

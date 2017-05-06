@@ -1,3 +1,106 @@
 ﻿@model Project_Db.Employee
 
-<p>Employee view</p>
+<div class="container">
+    <div class="mainWindow">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#1" data-toggle="tab">Report Problem</a>
+                </li>
+                <li>
+                    <a href="#2" data-toggle="tab">Check Progress</a>
+                </li>
+                <li>
+                    <a href="#3" data-toggle="tab">History</a>
+                </li>
+                <li>
+                    <a href="#4" data-toggle="tab">Call History</a>
+                </li>
+            </ul>
+
+            <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1">
+                    
+                    <form>
+                        <div class="row">
+                            <div class="form-group row">
+                                <label for="Title" class="col-md-2 col-form-label">Title</label>
+                                       
+                                <div class="col-md-10">
+                                    <input class="form-control" type="text" id="Title" placeholder="Title">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Cathegory" class="col-md-2 col-form-label">Cathegory</label>
+
+                                <div class="col-md-10">
+                                    <select class="form-control" type="text" id="Cathegory" placeholder="Cathegory">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Description" class="col-md-2 col-form-label">Description</label>
+
+                                <div class="col-md-10">
+                                    <textarea class="form-control" type="text" id="Description" rows="5" placeholder="Description"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Notes" class="col-md-2 col-form-label">Notes</label>
+
+                                <div class="col-md-10">
+                                    <textarea class="form-control" type="text" id="Notes" rows="5" placeholder="Notes"></textarea>
+                                </div>
+                            </div>
+                            <button type="button" id="submitButton" class="btn btn-default btn-lg">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane" id="2">
+                    <h3>Submitted problem status:</h3>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Problem Name</th>
+                                <th>Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Problem 1</td>
+                                <td>Progress 1</td>
+                            </tr>
+                            <tr >
+                                <th scope="row">2</th>
+                                <td>Problem 2</td>
+                                <td>Progress 2</td>
+                            </tr>
+                            <tr >
+                                <th scope="row">3</th>
+                                <td>Problem 3</td>
+                                <td>Progress 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <div class="tab-pane" id="3">
+                    <h3>Previously reported problems:</h3>
+                </div>
+
+                <div class="tab-pane" id="4">
+                    <h3>Call history</h3>
+                </div>
+            </div>
+    </div>
+</div>
