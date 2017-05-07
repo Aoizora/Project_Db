@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db
+namespace Project_Db.Models
 {
     using System;
     using System.Collections.Generic;

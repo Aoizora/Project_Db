@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7484b4fdcdf14055b48e20afb82bba98" Name="Diagram1">
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.AssigneeLog" Width="1.5" PointX="6" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.Call" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.Employee" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.Equipement" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.ProblemCallLog" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.Problem" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.ProblemType" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HelpdeskDataBaseModel.Specialist" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_AssigneeLogEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_ProblemAssigneeLog" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_CallEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_ProblemCallLogCall" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_EquipementEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_SpecialistEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_ProblemEquipement" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_ProblemProblemCallLog" ManuallyRouted="false" />
+        <AssociationConnector Association="HelpdeskDataBaseModel.FK_ProblemTypeProblem" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

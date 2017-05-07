@@ -7,37 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db
+namespace Project_Db.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Problem
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public Problem()
         {
             this.AssigneeLogs = new HashSet<AssigneeLog>();
-            this.Calls = new HashSet<Call>();
-            this.Equipements = new HashSet<Equipement>();
-            this.Specialists = new HashSet<Specialist>();
+            this.ProblemCallLogs = new HashSet<ProblemCallLog>();
         }
     
-        public int EmployeeID { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string JobTitle { get; set; }
-        public string Departement { get; set; }
-        public string PostCode { get; set; }
-        public string Gender { get; set; }
+        public int ProblemID { get; set; }
+        public string EquipementID { get; set; }
+        public string EmployeeID { get; set; }
+        public byte[] ProblemType { get; set; }
+        public string Description { get; set; }
+        public string Status { get; set; }
+        public string TimeResolved { get; set; }
+        public string Solution { get; set; }
+        public int ProblemTypeTypeID { get; set; }
+        public int EquipementEquipmentID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AssigneeLog> AssigneeLogs { get; set; }
+        public virtual Equipement Equipement { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Call> Calls { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Equipement> Equipements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Specialist> Specialists { get; set; }
+        public virtual ICollection<ProblemCallLog> ProblemCallLogs { get; set; }
+        public virtual ProblemType ProblemType1 { get; set; }
     }
 }

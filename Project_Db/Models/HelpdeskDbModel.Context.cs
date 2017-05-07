@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db
+namespace Project_Db.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbEntities : DbContext
+    public partial class HelpdeskDbEntities : DbContext
     {
-        public DbEntities()
-            : base("name=DbEntities")
+        public HelpdeskDbEntities()
+            : base("name=HelpdeskDbEntities")
         {
         }
     

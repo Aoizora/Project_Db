@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssigneeLogs">
+          <Key>
+            <PropertyRef Name="SpecialistID" />
+          </Key>
+          <Property Name="SpecialistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProblemID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProblemProblemID" Type="int" Nullable="false" />
+          <Property Name="EmployeeEmployeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calls">
+          <Key>
+            <PropertyRef Name="CallID" />
+          </Key>
+          <Property Name="CallID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CallerID" Type="int" Nullable="false" />
+          <Property Name="OperatorID" Type="int" Nullable="false" />
+          <Property Name="TimeStart" Type="datetime" Nullable="false" />
+          <Property Name="TimeEnd" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmployeeEmployeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Departement" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PostCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EMail" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipements">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Make" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmployeeEmployeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProblemCallLogs">
+          <Key>
+            <PropertyRef Name="CallID" />
+          </Key>
+          <Property Name="CallID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProblemID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProblemProblemID" Type="int" Nullable="false" />
+          <Property Name="CallCallID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Problems">
+          <Key>
+            <PropertyRef Name="ProblemID" />
+          </Key>
+          <Property Name="ProblemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipementID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmployeeID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProblemType" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TimeResolved" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Solution" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProblemTypeTypeID" Type="int" Nullable="false" />
+          <Property Name="EquipementEquipmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProblemTypes">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialists">
+          <Key>
+            <PropertyRef Name="SpecialistID" />
+          </Key>
+          <Property Name="SpecialistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumberOfProblems" Type="int" Nullable="false" />
+          <Property Name="Speciality" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Employee_EmployeeID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AssigneeLogEmployee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="AssigneeLogs" Type="Self.AssigneeLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="AssigneeLogs">
+              <PropertyRef Name="EmployeeEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallEmployee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Calls" Type="Self.Calls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Calls">
+              <PropertyRef Name="EmployeeEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipementEmployee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Equipements">
+              <PropertyRef Name="EmployeeEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemAssigneeLog">
+          <End Role="Problems" Type="Self.Problems" Multiplicity="1" />
+          <End Role="AssigneeLogs" Type="Self.AssigneeLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ProblemID" />
+            </Principal>
+            <Dependent Role="AssigneeLogs">
+              <PropertyRef Name="ProblemProblemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemCallLogCall">
+          <End Role="Calls" Type="Self.Calls" Multiplicity="1" />
+          <End Role="ProblemCallLogs" Type="Self.ProblemCallLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calls">
+              <PropertyRef Name="CallID" />
+            </Principal>
+            <Dependent Role="ProblemCallLogs">
+              <PropertyRef Name="CallCallID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemEquipement">
+          <End Role="Equipements" Type="Self.Equipements" Multiplicity="1" />
+          <End Role="Problems" Type="Self.Problems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Problems">
+              <PropertyRef Name="EquipementEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemProblemCallLog">
+          <End Role="Problems" Type="Self.Problems" Multiplicity="1" />
+          <End Role="ProblemCallLogs" Type="Self.ProblemCallLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ProblemID" />
+            </Principal>
+            <Dependent Role="ProblemCallLogs">
+              <PropertyRef Name="ProblemProblemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemTypeProblem">
+          <End Role="ProblemTypes" Type="Self.ProblemTypes" Multiplicity="1" />
+          <End Role="Problems" Type="Self.Problems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemTypes">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Problems">
+              <PropertyRef Name="ProblemTypeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialistEmployee">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Specialists" Type="Self.Specialists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Specialists">
+              <PropertyRef Name="Employee_EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="AssigneeLogs" EntityType="Self.AssigneeLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calls" EntityType="Self.Calls" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipements" EntityType="Self.Equipements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProblemCallLogs" EntityType="Self.ProblemCallLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Problems" EntityType="Self.Problems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProblemTypes" EntityType="Self.ProblemTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialists" EntityType="Self.Specialists" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AssigneeLogEmployee" Association="Self.FK_AssigneeLogEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="AssigneeLogs" EntitySet="AssigneeLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallEmployee" Association="Self.FK_CallEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Calls" EntitySet="Calls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipementEmployee" Association="Self.FK_EquipementEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Equipements" EntitySet="Equipements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemAssigneeLog" Association="Self.FK_ProblemAssigneeLog">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="AssigneeLogs" EntitySet="AssigneeLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemCallLogCall" Association="Self.FK_ProblemCallLogCall">
+            <End Role="Calls" EntitySet="Calls" />
+            <End Role="ProblemCallLogs" EntitySet="ProblemCallLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemEquipement" Association="Self.FK_ProblemEquipement">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="Problems" EntitySet="Problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemProblemCallLog" Association="Self.FK_ProblemProblemCallLog">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="ProblemCallLogs" EntitySet="ProblemCallLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemTypeProblem" Association="Self.FK_ProblemTypeProblem">
+            <End Role="ProblemTypes" EntitySet="ProblemTypes" />
+            <End Role="Problems" EntitySet="Problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialistEmployee" Association="Self.FK_SpecialistEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Specialists" EntitySet="Specialists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AssigneeLog">
+          <Key>
+            <PropertyRef Name="SpecialistID" />
+          </Key>
+          <Property Name="SpecialistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProblemID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProblemProblemID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeEmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_AssigneeLogEmployee" FromRole="AssigneeLogs" ToRole="Employees" />
+          <NavigationProperty Name="Problem" Relationship="Self.FK_ProblemAssigneeLog" FromRole="AssigneeLogs" ToRole="Problems" />
+        </EntityType>
+        <EntityType Name="Call">
+          <Key>
+            <PropertyRef Name="CallID" />
+          </Key>
+          <Property Name="CallID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CallerID" Type="Int32" Nullable="false" />
+          <Property Name="OperatorID" Type="Int32" Nullable="false" />
+          <Property Name="TimeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeEmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_CallEmployee" FromRole="Calls" ToRole="Employees" />
+          <NavigationProperty Name="ProblemCallLogs" Relationship="Self.FK_ProblemCallLogCall" FromRole="Calls" ToRole="ProblemCallLogs" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Departement" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AssigneeLogs" Relationship="Self.FK_AssigneeLogEmployee" FromRole="Employees" ToRole="AssigneeLogs" />
+          <NavigationProperty Name="Calls" Relationship="Self.FK_CallEmployee" FromRole="Employees" ToRole="Calls" />
+          <NavigationProperty Name="Equipements" Relationship="Self.FK_EquipementEmployee" FromRole="Employees" ToRole="Equipements" />
+          <NavigationProperty Name="Specialists" Relationship="Self.FK_SpecialistEmployee" FromRole="Employees" ToRole="Specialists" />
+        </EntityType>
+        <EntityType Name="Equipement">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Make" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeEmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_EquipementEmployee" FromRole="Equipements" ToRole="Employees" />
+          <NavigationProperty Name="Problems" Relationship="Self.FK_ProblemEquipement" FromRole="Equipements" ToRole="Problems" />
+        </EntityType>
+        <EntityType Name="ProblemCallLog">
+          <Key>
+            <PropertyRef Name="CallID" />
+          </Key>
+          <Property Name="CallID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProblemID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProblemProblemID" Type="Int32" Nullable="false" />
+          <Property Name="CallCallID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Call" Relationship="Self.FK_ProblemCallLogCall" FromRole="ProblemCallLogs" ToRole="Calls" />
+          <NavigationProperty Name="Problem" Relationship="Self.FK_ProblemProblemCallLog" FromRole="ProblemCallLogs" ToRole="Problems" />
+        </EntityType>
+        <EntityType Name="Problem">
+          <Key>
+            <PropertyRef Name="ProblemID" />
+          </Key>
+          <Property Name="ProblemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipementID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProblemType" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TimeResolved" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProblemTypeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="EquipementEquipmentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AssigneeLogs" Relationship="Self.FK_ProblemAssigneeLog" FromRole="Problems" ToRole="AssigneeLogs" />
+          <NavigationProperty Name="Equipement" Relationship="Self.FK_ProblemEquipement" FromRole="Problems" ToRole="Equipements" />
+          <NavigationProperty Name="ProblemCallLogs" Relationship="Self.FK_ProblemProblemCallLog" FromRole="Problems" ToRole="ProblemCallLogs" />
+          <NavigationProperty Name="ProblemType1" Relationship="Self.FK_ProblemTypeProblem" FromRole="Problems" ToRole="ProblemTypes" />
+        </EntityType>
+        <EntityType Name="ProblemType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Problems" Relationship="Self.FK_ProblemTypeProblem" FromRole="ProblemTypes" ToRole="Problems" />
+        </EntityType>
+        <EntityType Name="Specialist">
+          <Key>
+            <PropertyRef Name="SpecialistID" />
+          </Key>
+          <Property Name="SpecialistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumberOfProblems" Type="Int32" Nullable="false" />
+          <Property Name="Speciality" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Employee_EmployeeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_SpecialistEmployee" FromRole="Specialists" ToRole="Employees" />
+        </EntityType>
+        <Association Name="FK_AssigneeLogEmployee">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="AssigneeLogs" Type="Self.AssigneeLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="AssigneeLogs">
+              <PropertyRef Name="EmployeeEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemAssigneeLog">
+          <End Role="Problems" Type="Self.Problem" Multiplicity="1" />
+          <End Role="AssigneeLogs" Type="Self.AssigneeLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ProblemID" />
+            </Principal>
+            <Dependent Role="AssigneeLogs">
+              <PropertyRef Name="ProblemProblemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CallEmployee">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Calls" Type="Self.Call" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Calls">
+              <PropertyRef Name="EmployeeEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemCallLogCall">
+          <End Role="Calls" Type="Self.Call" Multiplicity="1" />
+          <End Role="ProblemCallLogs" Type="Self.ProblemCallLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calls">
+              <PropertyRef Name="CallID" />
+            </Principal>
+            <Dependent Role="ProblemCallLogs">
+              <PropertyRef Name="CallCallID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipementEmployee">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Equipements" Type="Self.Equipement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Equipements">
+              <PropertyRef Name="EmployeeEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecialistEmployee">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Specialists" Type="Self.Specialist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Specialists">
+              <PropertyRef Name="Employee_EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemEquipement">
+          <End Role="Equipements" Type="Self.Equipement" Multiplicity="1" />
+          <End Role="Problems" Type="Self.Problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipements">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Problems">
+              <PropertyRef Name="EquipementEquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemProblemCallLog">
+          <End Role="Problems" Type="Self.Problem" Multiplicity="1" />
+          <End Role="ProblemCallLogs" Type="Self.ProblemCallLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Problems">
+              <PropertyRef Name="ProblemID" />
+            </Principal>
+            <Dependent Role="ProblemCallLogs">
+              <PropertyRef Name="ProblemProblemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProblemTypeProblem">
+          <End Role="ProblemTypes" Type="Self.ProblemType" Multiplicity="1" />
+          <End Role="Problems" Type="Self.Problem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProblemTypes">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Problems">
+              <PropertyRef Name="ProblemTypeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssigneeLogs" EntityType="Self.AssigneeLog" />
+          <EntitySet Name="Calls" EntityType="Self.Call" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Equipements" EntityType="Self.Equipement" />
+          <EntitySet Name="ProblemCallLogs" EntityType="Self.ProblemCallLog" />
+          <EntitySet Name="Problems" EntityType="Self.Problem" />
+          <EntitySet Name="ProblemTypes" EntityType="Self.ProblemType" />
+          <EntitySet Name="Specialists" EntityType="Self.Specialist" />
+          <AssociationSet Name="FK_AssigneeLogEmployee" Association="Self.FK_AssigneeLogEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="AssigneeLogs" EntitySet="AssigneeLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemAssigneeLog" Association="Self.FK_ProblemAssigneeLog">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="AssigneeLogs" EntitySet="AssigneeLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CallEmployee" Association="Self.FK_CallEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Calls" EntitySet="Calls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemCallLogCall" Association="Self.FK_ProblemCallLogCall">
+            <End Role="Calls" EntitySet="Calls" />
+            <End Role="ProblemCallLogs" EntitySet="ProblemCallLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipementEmployee" Association="Self.FK_EquipementEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Equipements" EntitySet="Equipements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecialistEmployee" Association="Self.FK_SpecialistEmployee">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Specialists" EntitySet="Specialists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemEquipement" Association="Self.FK_ProblemEquipement">
+            <End Role="Equipements" EntitySet="Equipements" />
+            <End Role="Problems" EntitySet="Problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemProblemCallLog" Association="Self.FK_ProblemProblemCallLog">
+            <End Role="Problems" EntitySet="Problems" />
+            <End Role="ProblemCallLogs" EntitySet="ProblemCallLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProblemTypeProblem" Association="Self.FK_ProblemTypeProblem">
+            <End Role="ProblemTypes" EntitySet="ProblemTypes" />
+            <End Role="Problems" EntitySet="Problems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="DbEntities">
+          <EntitySetMapping Name="AssigneeLogs">
+            <EntityTypeMapping TypeName="Database1Model.AssigneeLog">
+              <MappingFragment StoreEntitySet="AssigneeLogs">
+                <ScalarProperty Name="SpecialistID" ColumnName="SpecialistID" />
+                <ScalarProperty Name="ProblemID" ColumnName="ProblemID" />
+                <ScalarProperty Name="ProblemProblemID" ColumnName="ProblemProblemID" />
+                <ScalarProperty Name="EmployeeEmployeeID" ColumnName="EmployeeEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calls">
+            <EntityTypeMapping TypeName="Database1Model.Call">
+              <MappingFragment StoreEntitySet="Calls">
+                <ScalarProperty Name="CallID" ColumnName="CallID" />
+                <ScalarProperty Name="CallerID" ColumnName="CallerID" />
+                <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="EmployeeEmployeeID" ColumnName="EmployeeEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="Database1Model.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Departement" ColumnName="Departement" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipements">
+            <EntityTypeMapping TypeName="Database1Model.Equipement">
+              <MappingFragment StoreEntitySet="Equipements">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="EmployeeEmployeeID" ColumnName="EmployeeEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProblemCallLogs">
+            <EntityTypeMapping TypeName="Database1Model.ProblemCallLog">
+              <MappingFragment StoreEntitySet="ProblemCallLogs">
+                <ScalarProperty Name="CallID" ColumnName="CallID" />
+                <ScalarProperty Name="ProblemID" ColumnName="ProblemID" />
+                <ScalarProperty Name="ProblemProblemID" ColumnName="ProblemProblemID" />
+                <ScalarProperty Name="CallCallID" ColumnName="CallCallID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Problems">
+            <EntityTypeMapping TypeName="Database1Model.Problem">
+              <MappingFragment StoreEntitySet="Problems">
+                <ScalarProperty Name="ProblemID" ColumnName="ProblemID" />
+                <ScalarProperty Name="EquipementID" ColumnName="EquipementID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ProblemType" ColumnName="ProblemType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TimeResolved" ColumnName="TimeResolved" />
+                <ScalarProperty Name="Solution" ColumnName="Solution" />
+                <ScalarProperty Name="ProblemTypeTypeID" ColumnName="ProblemTypeTypeID" />
+                <ScalarProperty Name="EquipementEquipmentID" ColumnName="EquipementEquipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProblemTypes">
+            <EntityTypeMapping TypeName="Database1Model.ProblemType">
+              <MappingFragment StoreEntitySet="ProblemTypes">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialists">
+            <EntityTypeMapping TypeName="Database1Model.Specialist">
+              <MappingFragment StoreEntitySet="Specialists">
+                <ScalarProperty Name="SpecialistID" ColumnName="SpecialistID" />
+                <ScalarProperty Name="NumberOfProblems" ColumnName="NumberOfProblems" />
+                <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+                <ScalarProperty Name="Employee_EmployeeID" ColumnName="Employee_EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

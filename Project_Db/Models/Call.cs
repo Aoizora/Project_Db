@@ -7,28 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Db
+namespace Project_Db.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipement
+    public partial class Call
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Equipement()
+        public Call()
         {
-            this.Problems = new HashSet<Problem>();
+            this.ProblemCallLogs = new HashSet<ProblemCallLog>();
         }
     
-        public int EquipmentID { get; set; }
-        public int UserID { get; set; }
-        public string Make { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
+        public int CallID { get; set; }
+        public int CallerID { get; set; }
+        public int OperatorID { get; set; }
+        public System.DateTime TimeStart { get; set; }
+        public System.DateTime TimeEnd { get; set; }
+        public string Notes { get; set; }
         public int EmployeeEmployeeID { get; set; }
     
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Problem> Problems { get; set; }
+        public virtual ICollection<ProblemCallLog> ProblemCallLogs { get; set; }
     }
 }
